@@ -58,18 +58,30 @@ class Application(tk.Frame):
         findcable = tk.Toplevel(self)
         pickle_state = tk.Label(findcable, text="Please Choose the type of Cable")
         pickle_state.pack()
-        sheets= tk.StringVar()
+        sheets=tk.StringVar()
         for x in ws:
+            y = str(x)
             tk.Radiobutton(findcable, text=x,variable=sheets,value=x).pack() 
         e = Entry(findcable)
         e.pack()
-        tk.Button(findcable, text="Find Cable",command=lambda: self.results(ws,e.get())).pack()       
+        tk.Button(findcable, text="Find Cable",command=lambda: self.results(ws,sheets.get(),e.get())).pack()       
         tk.Button(self, text="QUIT", fg="red",command=root.destroy).pack()
 
 
 
-    def results(self,ws,cable):
+    def results(self,ws,sheets,cable):
         results = tk.Toplevel(self)
+        tk.Label(results, text="Cable Type ").grid(row=0, column=0)
+        tk.Label(results, text=sheets).grid(row=0, column=1)
+
+        tk.Label(results, text="Cable Number ").grid(row=1, column=0)
+        tk.Label(results, text=cable).grid(row=1, column=1)
+
+        tk.Label(results, text="Cable Type ").grid(row=2, column=0)
+        temp =ws[sheets]
+        temp2 = temp.loc[temp['Cable No'] == int(cable)]
+        temp3 = temp2.iat[0,1]
+        tk.Label(results, text=temp3).grid(row=2, column=1)
 
 root = tk.Tk()
 app = Application(master=root)
