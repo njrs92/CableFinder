@@ -5,6 +5,7 @@ import pandas as pd
 import pickle
 import time
 
+
 file_path = ""
 
 class Application(tk.Frame):
@@ -122,11 +123,14 @@ class Application(tk.Frame):
         pickle_state = tk.Label(findcable, text="Please Choose the type of Cable",padx=10,pady=10,font=("Helvetica", 16))
         pickle_state.pack()
         sheets=tk.StringVar()
+        sheets.set('VIDEO')
         for x in ws:
             tk.Radiobutton(findcable, text=x,variable=sheets,value=x,indicatoron=0,width=25).pack()
         tk.Label(findcable, text="Enter Cable Number",padx=10,pady=10,font=("Helvetica", 16)).pack()
         e = Entry(findcable,font=("Helvetica", 16),justify=CENTER)
         e.pack()
+        findcable.tkraise(self)
+        e.focus()
         tk.Button(findcable, text="Find Cable",command=lambda: self.results(ws,sheets.get(),e.get()),font=("Helvetica", 16)).pack()       
         tk.Button(findcable, text="QUIT", fg="red",command=root.destroy,font=("Helvetica", 16)).pack()
 
@@ -161,6 +165,7 @@ class Application(tk.Frame):
             row6 = [str(temp2.iat[0,10]),str(temp2.iat[0,11]),str(temp2.iat[0,16]),str(temp2.iat[0,33]),str(temp2.iat[0,13])]
         
             master = [row1,row2,row3,row4,row5,row6]
+            
             i = 0
             j = 0
         
