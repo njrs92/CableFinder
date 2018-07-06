@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "CableFinder", "CableFinder\CableFinder.pyproj", "{CB015361-A5C1-47A3-80DE-E0FD094F6A87}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Cable_finder", "CableFinder\cable_finder.pyproj", "{CB015361-A5C1-47A3-80DE-E0FD094F6A87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
